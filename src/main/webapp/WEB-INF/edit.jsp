@@ -11,7 +11,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Burger Tracker</title>
+    <title>Edit Burger</title>
     <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/main.css"> <!-- change to match your file/naming structure -->
     <script src="/webjars/jquery/jquery.min.js"></script>
@@ -19,27 +19,10 @@
 </head>
 <body>
    <div class = "container">
-   <h1>Burger Tracker</h1>
-   <table class="table table-striped">
-	   <thead>
-		   	<th>Burger Name</th>
-		   	<th>Restaurant Name</th>
-		   	<th>Rating (out of 5)</th>
-	   </thead>
-	   <tbody>
-		   	<c:forEach var="burger" items="${allBurgers}">
-		   		<tr>
-			   		<td><a href="/burgers/${burger.id}/edit"><c:out value="${burger.burgerName}"/></a></td>
-			   		<td><c:out value="${burger.restaurantName}"/></td>
-			   		<td><c:out value="${burger.rating}"/></td>
-		   		</tr>
-		   	</c:forEach>
-	   </tbody>
-   </table>
-   </div>
-   <div class="container col-4">
-   		<h1>Add a Burger</h1>
-   		<form:form class ="form" action="/create" method="post" modelAttribute="burger">
+   <h1>Edit Burger</h1>
+	<a href="/">Go back</a>
+   		<form:form class ="form" action="/burgers/${burger.id}" method="post" modelAttribute="burger">
+	   		<input type="hidden" name="_method" value="put">
 	   		<div class="form-group">
 	   			<form:label path="burgerName">Burger Name</form:label>
 	   			<form:input class="form-control" path="burgerName"/>
